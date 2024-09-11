@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Color_Split_Material
-  m_Shader: {fileID: 4800000, guid: 5b806b2fca68a4e9fac2db27877e5f33, type: 3}
+  m_Name: Straight_Cut
+  m_Shader: {fileID: 4800000, guid: f38b5643f1cd243a5852bcc864c607a5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -80,11 +80,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0, g: 1, b: 0.07500005, a: 1}
-    - _Color2: {r: 1, g: 0, b: 0.16373253, a: 1}
-    - _ColorBL: {r: 0.94275093, g: 0, b: 1, a: 1}
-    - _ColorBR: {r: 0, g: 0.83344054, b: 1, a: 1}
-    - _ColorTL: {r: 1, g: 0.37498978, b: 0, a: 1}
-    - _ColorTR: {r: 0, g: 1, b: 0.13633704, a: 1}
+    - _ColorBL: {r: 1, g: 0.78431374, b: 0, a: 1}
+    - _ColorBR: {r: 0, g: 0.105882354, b: 1, a: 1}
+    - _ColorTL: {r: 1, g: 0.7819159, b: 0, a: 1}
+    - _ColorTR: {r: 0, g: 0.10449934, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
