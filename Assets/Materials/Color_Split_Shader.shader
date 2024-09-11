@@ -3,8 +3,10 @@ Shader "Unlit/Color_Split_Shader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color1 ("Tint Top", Color) = (1, 1, 1, 1)
-        _Color2 ("Tint Bottom", Color) = (1, 1, 1, 1)
+        _ColorTL ("Tint Top Left", Color) = (1, 1, 1, 1)
+        _ColorTR ("Tint Top Right", Color) = (1, 1, 1, 1)
+        _ColorBL ("Tint Bottom Left", Color) = (1, 1, 1, 1)
+        _ColorBR ("Tint Bottom Right", Color) = (1, 1, 1, 1)
         _ColorChangeY ("Color Change Pos", float) = 0.5
     }
     SubShader
@@ -40,8 +42,10 @@ Shader "Unlit/Color_Split_Shader"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float4 _Color1;
-            float4 _Color2;
+            float4 _ColorTL;
+            float4 _ColorTR;
+            float4 _ColorBL;
+            float4 _ColorBR;
             float _ColorChangeY;
 
             v2f vert (appdata v)
@@ -51,13 +55,28 @@ Shader "Unlit/Color_Split_Shader"
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
                 // apply color depending on position
-                if(o.uv.y <= _ColorChangeY)
+                if (o.uv.x <= 0.5) 
                 {
-                    o.color = _Color1;
+                    if(o.uv.y <= 0.5)
+                    {
+                        o.color = _ColorTL;
+                    }
+                    else
+                    {
+                        o.color = _ColorBL;
+                    }
                 }
                 else
                 {
-                    o.color = _Color2;
+                    if(o.uv.y <= 0.5)
+                    {
+                        o.color = _ColorTR;
+                    }
+                    else
+                    {
+                        o.color = _ColorBR;
+                    }
+                    
                 }
 
                 UNITY_TRANSFER_FOG(o,o.vertex);
