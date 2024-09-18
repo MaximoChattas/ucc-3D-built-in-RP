@@ -5,11 +5,13 @@ Shader "Unlit/MonumentValley"
         _ColorX ("Color X", Color) = (1, 1, 1, 1)
         _ColorY ("Color Y", Color) = (1, 1, 1, 1)
         _ColorZ ("Color Z", Color) = (1, 1, 1, 1)
+        _YLimit ("Y Limit transparent", float) = 0.0
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue" = "Transparent" } // Para enviarlo a renderizar como transparente
         LOD 100
+        Blend SrcAlpha OneMinusSrcAlpha // Agregar el blend permite color y transparencia
 
         Pass
         {
@@ -34,6 +36,7 @@ Shader "Unlit/MonumentValley"
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
                 float3 normalDir : TEXCOORD0;
+                float yPos : TEXCOORD1;
             };
 
             // sampler2D _MainTex;
@@ -41,6 +44,7 @@ Shader "Unlit/MonumentValley"
             float4 _ColorX;
             float4 _ColorY;
             float4 _ColorZ;
+            float _YLimit;
 
             v2f vert (appdata v)
             {
@@ -50,6 +54,9 @@ Shader "Unlit/MonumentValley"
 
                 // Direccion de las normales segun la camara, matriz inversa transpuesta
                 o.normalDir = mul(UNITY_MATRIX_IT_MV, v.normal);
+
+                // Posicion del objeto respecto al mundo
+                o.yPos = mul(unity_ObjectToWorld, o.vertex).y;
 
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
@@ -66,7 +73,7 @@ Shader "Unlit/MonumentValley"
                 fixed4 col = (0,0,0,0);
 
                 col = _ColorX * rightOrientation + _ColorY * upOrientation;
-                col.a = 1.0;
+                col.a = i.yPos > _YLimit ? 1.0 : 0.0;
 
 
                 // sample the texture
