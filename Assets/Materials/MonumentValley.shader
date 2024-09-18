@@ -5,7 +5,6 @@ Shader "Unlit/MonumentValley"
         _ColorX ("Color X", Color) = (1, 1, 1, 1)
         _ColorY ("Color Y", Color) = (1, 1, 1, 1)
         _ColorZ ("Color Z", Color) = (1, 1, 1, 1)
-        _YLimit ("Limit Y Transparent", Float) = 0.0
     }
     SubShader
     {
