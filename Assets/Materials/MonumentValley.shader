@@ -73,7 +73,7 @@ Shader "Unlit/MonumentValley"
                 fixed4 col = (0,0,0,0);
 
                 col = _ColorX * rightOrientation + _ColorY * upOrientation;
-                col.a = i.yPos > _YLimit ? 1.0 : 0.0;
+                col.a = saturate(i.yPos); // Changes transparency gradually
 
 
                 // sample the texture
