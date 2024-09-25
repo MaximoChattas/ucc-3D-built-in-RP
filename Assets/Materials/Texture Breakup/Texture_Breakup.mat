@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Straight_Cut
-  m_Shader: {fileID: 4800000, guid: f38b5643f1cd243a5852bcc864c607a5, type: 3}
+  m_Name: Texture_Breakup
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -62,7 +62,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _ColorChangeY: 0.5
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -80,9 +79,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorBL: {r: 1, g: 0.78431374, b: 0, a: 1}
-    - _ColorBR: {r: 0, g: 0.105882354, b: 1, a: 1}
-    - _ColorTL: {r: 1, g: 0.7819159, b: 0, a: 1}
-    - _ColorTR: {r: 0, g: 0.10449934, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
