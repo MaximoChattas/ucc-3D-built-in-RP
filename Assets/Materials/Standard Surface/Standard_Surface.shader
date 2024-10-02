@@ -6,6 +6,8 @@ Shader "Custom/Standard_Surface"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+        _Amplitude ("Amplitude", Range(0, 5)) = 1
+        _Frequency ("Frecuency", Range(0, 20)) = 1
     }
     SubShader
     {
@@ -15,20 +17,29 @@ Shader "Custom/Standard_Surface"
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows
+        #pragma vertex vert addshadow
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
         sampler2D _MainTex;
+        half _Glossiness;
+        half _Metallic;
+        fixed4 _Color;
+        float _Amplitude;
+        float _Frequency;
 
         struct Input
         {
             float2 uv_MainTex;
         };
 
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
+        void vert(inout appdata_full data)
+        {
+            data.vertex.xyz += sin(data.vertex.x * _Frequency + _Time.y * 20) * _Amplitude;
+
+        }
+
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
